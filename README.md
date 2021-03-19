@@ -1,1 +1,1 @@
-# OlympicRankingTables
+# Olympic Ranking Tables
