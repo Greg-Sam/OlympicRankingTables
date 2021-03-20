@@ -5,12 +5,43 @@ async function getMenRankings() {
       let menRanks = res.data
       console.log(menRanks)
       let i = 1
+      let countries = {}
       menRanks.map(team => {
-        let lowerFlag = team.flag.toLowerCase()
-        let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
-        let row = document.createElement('tr')
-        row.className = 'table-dark'
-        row.innerHTML = `<tr class="table-dark"> 
+        let country = team.country
+        if ((`${country}` in countries)) {
+          console.log('already there')
+          countries[`${country}`]++
+        } else {
+          console.log('first one')
+          countries[`${country}`] = 1
+          console.log(countries)
+        }
+        if (team.special === undefined) {
+          if (countries[`${country}`] > 2) {
+            console.log('oh no')
+            let lowerFlag = team.flag.toLowerCase()
+            let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+            let row = document.createElement('tr')
+            row.className = 'table-danger'
+            row.innerHTML = `<tr class="table-dark"> 
+        <td>CQ</td>
+        <td><img src="${flag}" alt="${team.country}"></td>
+        <td>${team.name}</td>
+        <td>${team.olympicPoints.$numberInt}</td>
+        <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
+        </tr>`
+            document.getElementById('teamRow').append(row)
+          }
+          else {
+            if (i < 15) {
+
+              console.log('im going to tokyo')
+              let lowerFlag = team.flag.toLowerCase()
+              let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+              let row = document.createElement('tr')
+              row.className = 'table-primary'
+              row.innerHTML = `<tr class="table-dark"> 
         <td>#${i}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
         <td>${team.name}</td>
@@ -18,12 +49,49 @@ async function getMenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
-        i++
-        document.getElementById('teamRow').append(row)
-        console.log('added a row')
+              i++
+              document.getElementById('teamRow').append(row)
+
+            }
+            else {
+              let lowerFlag = team.flag.toLowerCase()
+              let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+              let row = document.createElement('tr')
+              row.className = 'table-dark'
+              row.innerHTML = `<tr class="table-dark"> 
+        <td>#${i}</td>
+        <td><img src="${flag}" alt="${team.country}"></td>
+        <td>${team.name}</td>
+        <td>${team.olympicPoints.$numberInt}</td>
+        <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
+        </tr>`
+              i++
+              document.getElementById('teamRow').append(row)
+            }
+          }
+        }
+        else {
+          let lowerFlag = team.flag.toLowerCase()
+          let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+          let row = document.createElement('tr')
+          row.className = 'table-success'
+          row.innerHTML = `<tr class="table-dark"> 
+        <td>${team.special}</td>
+        <td><img src="${flag}" alt="${team.country}"></td>
+        <td>${team.name}</td>
+        <td>${team.olympicPoints.$numberInt}</td>
+        <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
+        </tr>`
+
+          document.getElementById('teamRow').append(row)
+        }
+
       })
-    })
-    .catch(err => console.error(err))
+        .catch(err => console.error(err))
+    }
+    )
 }
 getMenRankings()
 

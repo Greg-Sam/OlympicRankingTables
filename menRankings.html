@@ -7,14 +7,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+ 
   <title>Men's Olympic Rankings</title>
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://beachvolleyblog.net/">
+        <img src="./images/ogSW49E6_400x400.jpg" alt="Beach Volley Blog Logo" width="60" height="60"
+          class="d-inline-block align-top">
+        The Beach Volley Blog
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://beachvolleyblog.net/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://beachvolleyblog.net/about/">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Olympic Rankings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item"
+                href="https://beachvolleyblog.net/olympic-ranking-tables/menRankings.html">Men's Olympic
+                Rankings</a></li>
+            <li><a class="dropdown-item"
+                href="https://beachvolleyblog.net/olympic-rankings/womens-olympic-rankings/">Women's Olympic
+                Rankings</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Olympic Qualification Status
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="https://beachvolleyblog.net/mens-olympic-qualification-status/">Men's
+                Olympic
+                Qualification Status</a></li>
+            <li><a class="dropdown-item" href="https://beachvolleyblog.net/womens-olympic-qualification-status/">Women's
+                Olympic Qualification Status</a></li>
+          </ul>
+        </li>
 
+      </ul>
+    </div>
+  </nav>
   <div class="table-responsive">
-    <table class="table table-dark table-hover" >
-      <thead>
+    <table class="table table-dark table-hover">
+      <thead class="header">
         <tr>
           <th scope="col">#</th>
           <th scope="col">Country</th>
@@ -29,13 +74,16 @@
     </table>
   </div>
 
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
     crossorigin="anonymous"></script>
 
-    <script src="app.js"></script>
+  <script src="app.js"></script>
+  
+
+  </script>
 </body>
 
 </html>
