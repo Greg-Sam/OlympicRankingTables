@@ -1,12 +1,12 @@
-async function getMenRankings() {
+async function getWomenRankings() {
 
-  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/menolympicrankingsapi/incoming_webhook/api?secret=sEcrEt')
+  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/womenolympicrankingsapi/incoming_webhook/apiwomenranking?secret=sEcrEt')
     .then(async (res) => {
-      let menRanks = res.data
+      let womenRanks = res.data
       let i = 1
       let score = 0
       let countries = {}
-      menRanks.map(team => {
+      womenRanks.map(team => {
 
         // check if in top two countries
         let country = team.country
@@ -37,48 +37,48 @@ async function getMenRankings() {
           else {
             console.log(team.olympicPoints.$numberInt)
             console.log(score)
-            if (score === team.olympicPoints.$numberInt) {
+        //     if (score === team.olympicPoints.$numberInt) {
 
-              // tied team in country's top 2 
-              if (i <= 15) {
-                // teams in top 15
-                i = i - 1
-                let lowerFlag = team.flag.toLowerCase()
-                let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
-                let row = document.createElement('tr')
-                row.className = 'table-primary'
-                row.innerHTML = `<tr class="table-dark"> 
-        <td>#${i}</td>
-        <td><img src="${flag}" alt="${team.country}"></td>
-        <td>${team.name}</td>
-        <td>${team.olympicPoints.$numberInt}</td>
-        <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
-        </tr>`
-                i = i + 2
-                document.getElementById('teamRow').append(row)
-                score = team.olympicPoints.$numberInt
-              }
-              else {
-                // tied team outside of top 15
-                i = i - 1
-                let lowerFlag = team.flag.toLowerCase()
-                let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
-                let row = document.createElement('tr')
-                row.className = 'table-dark'
-                row.innerHTML = `<tr class="table-dark"> 
-        <td>#${i}</td>
-        <td><img src="${flag}" alt="${team.country}"></td>
-        <td>${team.name}</td>
-        <td>${team.olympicPoints.$numberInt}</td>
-        <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
-        </tr>`
-                i = i + 2
-                document.getElementById('teamRow').append(row)
-                score = team.olympicPoints.$numberInt
-              }
-            } else {
+        //       // tied team in country's top 2 
+        //       if (i <= 15) {
+        //         // teams in top 15
+        //         i = i - 1
+        //         let lowerFlag = team.flag.toLowerCase()
+        //         let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+        //         let row = document.createElement('tr')
+        //         row.className = 'table-primary'
+        //         row.innerHTML = `<tr class="table-dark"> 
+        // <td>#${i}</td>
+        // <td><img src="${flag}" alt="${team.country}"></td>
+        // <td>${team.name}</td>
+        // <td>${team.olympicPoints.$numberInt}</td>
+        // <td>${team.lowestCounted.$numberInt}</td>
+        // <td>${team.noOfTournaments.$numberInt}</td>
+        // </tr>`
+        //         i = i + 2
+        //         document.getElementById('teamRow').append(row)
+        //         score = team.olympicPoints.$numberInt
+        //       }
+        //       else {
+        //         // tied team outside of top 15
+        //         i = i - 1
+        //         let lowerFlag = team.flag.toLowerCase()
+        //         let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
+        //         let row = document.createElement('tr')
+        //         row.className = 'table-dark'
+        //         row.innerHTML = `<tr class="table-dark"> 
+        // <td>#${i}</td>
+        // <td><img src="${flag}" alt="${team.country}"></td>
+        // <td>${team.name}</td>
+        // <td>${team.olympicPoints.$numberInt}</td>
+        // <td>${team.lowestCounted.$numberInt}</td>
+        // <td>${team.noOfTournaments.$numberInt}</td>
+        // </tr>`
+        //         i = i + 2
+        //         document.getElementById('teamRow').append(row)
+        //         score = team.olympicPoints.$numberInt
+        //       }
+        //     } else {
               // not tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
@@ -121,7 +121,7 @@ async function getMenRankings() {
             }
 
           }
-        }
+        
         else {
           // teams qualified through WC or OQT
           let lowerFlag = team.flag.toLowerCase()
@@ -146,7 +146,7 @@ async function getMenRankings() {
     )
     .catch(err => console.error(err))
 }
-getMenRankings()
+getWomenRankings()
 
 // var tr = "<tr>";
 // tr += "<td>" + posts_array[i][0] + "</td>";
