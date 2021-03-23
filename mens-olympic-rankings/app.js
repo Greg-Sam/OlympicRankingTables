@@ -7,6 +7,7 @@ async function getMenRankings() {
       let score = 0
       let countries = {}
       menRanks.map(team => {
+        let teamNo = team.teamNo.$numberDouble
 
         // check if in top two countries
         let country = team.country
@@ -23,8 +24,10 @@ async function getMenRankings() {
             let lowerFlag = team.flag.toLowerCase()
             let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
             let row = document.createElement('tr')
-            row.className = 'table-danger'
-            row.innerHTML = `<tr class="table-dark"> 
+
+            row.className = `table-danger`
+            row.id = teamNo
+            row.innerHTML = `<tr > 
         <td>CQ</td>
         <td><img src="${flag}" alt="${team.country}"></td>
         <td>${team.name}</td>
@@ -35,8 +38,6 @@ async function getMenRankings() {
             document.getElementById('teamRow').append(row)
           }
           else {
-            console.log(team.olympicPoints.$numberInt)
-            console.log(score)
             if (score === team.olympicPoints.$numberInt) {
 
               // tied team in country's top 2 
@@ -47,6 +48,7 @@ async function getMenRankings() {
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
                 row.className = 'table-primary'
+                row.id = teamNo
                 row.innerHTML = `<tr class="table-dark"> 
         <td>#${i}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
@@ -66,6 +68,7 @@ async function getMenRankings() {
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
                 row.className = 'table-dark'
+                row.id = teamNo
                 row.innerHTML = `<tr class="table-dark"> 
         <td>#${i}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
@@ -87,6 +90,7 @@ async function getMenRankings() {
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
                 row.className = 'table-primary'
+                row.id = teamNo
                 row.innerHTML = `<tr class="table-dark"> 
         <td>#${i}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
@@ -106,6 +110,7 @@ async function getMenRankings() {
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
                 row.className = 'table-dark'
+                row.id = teamNo
                 row.innerHTML = `<tr class="table-dark"> 
         <td>#${i}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
@@ -128,6 +133,7 @@ async function getMenRankings() {
           let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
           let row = document.createElement('tr')
           row.className = 'table-success'
+          row.id = teamNo
           row.innerHTML = `<tr class="table-dark"> 
         <td>${team.special}</td>
         <td><img src="${flag}" alt="${team.country}"></td>
@@ -148,16 +154,70 @@ async function getMenRankings() {
 }
 getMenRankings()
 
-// var tr = "<tr>";
-// tr += "<td>" + posts_array[i][0] + "</td>";
-// tr += "<td>" + posts_array[i][1] + "</td>";
-// tr += "<td>" + posts_array[i][2] + "</td>";
-// tr += "<td>" + posts_array[i][3] + "</td>";
-// tr += "</tr>";
 
-/* <th scope = "row" id = "rank" ></ >
-<td id="flag">Mark</td>
-<td id="name">Otto</td>
-<td id="olympicPoints">@mdo</td>
-<td id="lowestCounted">@mdo</td>
-<td id="noOfTournaments">@mdo</td> */
+async function populateModal(tournamentList) {
+  await tournamentList.map(oneTournament => {
+
+  })
+}
+
+function openModal(tournamentList) {
+  document.getElementById("backdrop").style.display = "block"
+  document.getElementById("tournamentsModal").style.display = "block"
+  document.getElementById("tournamentsModal").className += "show"
+  modal.innerHTML = `
+  <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tournamentsModalLabel">${tournamentList[0].name}</h5>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+          </div>
+        </div>
+  `
+  // document.getElementById('teamTournamentsModal').append(modal)
+  populateModal(tournamentList)
+}
+function closeModal() {
+  document.getElementById("backdrop").style.display = "none"
+  document.getElementById("tournamentsModal").style.display = "none"
+  document.getElementById("tournamentsModal").className += document.getElementById("tournamentsModal").className.replace("show", "")
+}
+// Get the modal
+var modal = document.getElementById('tournamentsModal');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    closeModal()
+  }
+}
+
+
+
+async function displayResults(res) {
+  let tournamentList = res.data
+  console.log(tournamentList)
+  openModal(tournamentList)
+}
+
+
+async function getTournaments(teamNo) {
+  await axios.get(`https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/team_results/incoming_webhook/team_results?teamNo=${teamNo}`)
+    .then(async (res) => {
+      displayResults(res)
+    }
+    )
+}
+
+document.addEventListener('click', event => { 
+  var target = event.target
+  parent = target.parentElement
+  console.log(parent.id)
+  if (parent.id > 0) {
+  getTournaments(parent.id)
+  }
+
+})

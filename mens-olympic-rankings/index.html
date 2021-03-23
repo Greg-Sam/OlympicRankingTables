@@ -60,7 +60,7 @@
     </div>
   </nav>
   <div class="container-sm">
-    <h1 class="text-center">Men's Beach Volleyball Olympic Rankings</h1>
+    <h1 class="text-center" id="title">Men's Beach Volleyball Olympic Rankings</h1>
     <p>The top 15 teams in the Olympic rankings on June 13th, 2021 will earn a place for their country at the Tokyo.
       However, only the two teams per country can qualify for the Olympics. Rankings are based on the top 12 finishes in
       FIVB World Tour events and one continental championship during the qualifying period. The qualification period
@@ -130,7 +130,26 @@
         </table>
 
     </container-fluid>
-
+    <div class="modal fade" id="tournamentsModal" tabindex="-1" aria-labelledby="tournamentsModalLabel" aria-modal="true"
+      role="dialog">
+      <div class="modal-dialog" role="document" id="teamTournamentsModal">
+        <!-- <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="tournamentsModalLabel">Modal title</h5>
+            <button type="button" class="close" aria-label="Close" onclick="closeModal()">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
   </div>
 
 
