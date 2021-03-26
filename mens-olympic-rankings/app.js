@@ -157,7 +157,11 @@ getMenRankings()
 
 async function populateModal(tournamentList) {
   await tournamentList.map(oneTournament => {
-
+    const dateObject = new Date(1567900800000)
+    let tournament = document.createElement('li')
+    tournament.innerHTML =`
+    <strong>${oneTournament.tournament}</strong> / ${oneTournament.type} / ${dateObject} <br>Points: ${oneTournament.points.$numberInt} / Finish:${oneTournament.rank.$numberInt}`
+    document.getElementById('tournamentList').append(tournament)
   })
 }
 
@@ -171,6 +175,8 @@ function openModal(tournamentList) {
             <h5 class="modal-title" id="tournamentsModalLabel">${tournamentList[0].name}</h5>
           </div>
           <div class="modal-body">
+          <ol id="tournamentList">
+          </ol>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
