@@ -156,13 +156,75 @@ getMenRankings()
 
 
 async function populateModal(tournamentList) {
-  await tournamentList.map(oneTournament => {
-    const dateObject = new Date(1567900800000)
+
+  for (let i = 0; i < tournamentList.length; i++) {
+    let rank = ''
+    let event = tournamentList[i]
+    let date = parseInt(event.date.$date.$numberLong)
+    let ranked = parseInt(event.rank.$numberInt)
+
+    switch (ranked) {
+      case 1:
+        rank = "1st"
+
+        break;
+      case 2:
+        rank = "2nd"
+        break;
+      case 3:
+        rank = "3rd"
+        break;
+      case 4:
+        rank = "4th"
+        break;
+      case 5:
+        rank = "5th"
+        break;
+      case 9:
+        rank = "9th"
+        break;
+      case 17:
+        rank = "17th"
+        break;
+      case 25:
+        rank = "25th"
+        break;
+      case 33:
+        rank = "33rd"
+        break;
+      case 41:
+        rank = "41st"
+        break;
+      default:
+        break;
+    }
+
+
+    const dateObject = new Date(date).toJSON().split("T")[0]
+    // var d = dateObject.getDate()
+    // var m = dateObject.getMonth()
+    // console.log(d)
+    // console.log(m)
+
     let tournament = document.createElement('li')
-    tournament.innerHTML =`
-    <strong>${oneTournament.tournament}</strong> / ${oneTournament.type} / ${dateObject} <br>Points: ${oneTournament.points.$numberInt} / Finish:${oneTournament.rank.$numberInt}`
+    tournament.innerHTML = `
+    <div class="container">
+  <div class="row">
+  <div class="col-8">
+     <strong>${event.tournament}</strong> ${event.type} - ${dateObject}
+    </div>
+    <div class="col-2">
+      <strong>${rank} place</strong>
+    </div>
+    <div class="col-2">
+    ${event.points.$numberInt} Points
+    </div>
+    
+  </div>
+</div>
+    `
     document.getElementById('tournamentList').append(tournament)
-  })
+  }
 }
 
 function openModal(tournamentList) {
@@ -170,17 +232,35 @@ function openModal(tournamentList) {
   document.getElementById("tournamentsModal").style.display = "block"
   document.getElementById("tournamentsModal").className += "show"
   modal.innerHTML = `
-  <div class="modal-content">
+  <div class="modal-content modal-lg">
           <div class="modal-header">
             <h5 class="modal-title" id="tournamentsModalLabel">${tournamentList[0].name}</h5>
+             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
           </div>
           <div class="modal-body">
-          <ol id="tournamentList">
-          </ol>
+          <ul id="tournamentList" style="list-style-type:none;" >
+          <li>
+          <div class="container">
+          <div class="row">
+  
+          <div class="col-8">
+          <h5>Event</h5>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+          <div class="col-2">
+          <h5>Place</h5>
           </div>
+          <div class="col-2" >
+          <h5>Points</h5>
+          </div>
+          </div>
+  </div></li>
+          </ul>
+          </div>
+         <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+      </div>
         </div>
   `
   // document.getElementById('teamTournamentsModal').append(modal)
@@ -196,7 +276,7 @@ var modal = document.getElementById('tournamentsModal');
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
-  if (event.target == modal) {
+  if (event.target == modal || event.target.class == "close") {
     closeModal()
   }
 }
@@ -204,8 +284,7 @@ window.onclick = function (event) {
 
 
 async function displayResults(res) {
-  let tournamentList = res.data
-  console.log(tournamentList)
+  let tournamentList = res.data 
   openModal(tournamentList)
 }
 
@@ -218,12 +297,12 @@ async function getTournaments(teamNo) {
     )
 }
 
-document.addEventListener('click', event => { 
+document.addEventListener('click', event => {
   var target = event.target
   parent = target.parentElement
   console.log(parent.id)
   if (parent.id > 0) {
-  getTournaments(parent.id)
+    getTournaments(parent.id)
   }
 
 })

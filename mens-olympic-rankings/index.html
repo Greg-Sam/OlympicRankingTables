@@ -10,10 +10,16 @@
   <meta name="description"
     content="Olympic qualification rankings for men's beach volleyball, including color codes and points needed to replace 12th result.">
   <title>Men's Beach Volleyball Olympic Rankings</title>
+  <style>
+    ul.no-bullets {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
 </head>
 
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-light" class="collapse navbar-collapse" id="navbarNavDropdown">
     <div class="container-fluid">
       <a class="navbar-brand" href="http://beachvolleyblog.net/">
@@ -130,23 +136,13 @@
         </table>
 
     </container-fluid>
-    <div class="modal fade" id="tournamentsModal" tabindex="-1" aria-labelledby="tournamentsModalLabel" aria-modal="true"
-      role="dialog">
-      <div class="modal-dialog" role="document" id="teamTournamentsModal">
-        <!-- <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="tournamentsModalLabel">Modal title</h5>
-            <button type="button" class="close" aria-label="Close" onclick="closeModal()">
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-          </div>
-        </div> -->
+    <div class="modal fade" id="tournamentsModal" tabindex="-1" aria-labelledby="tournamentsModalLabel"
+      aria-modal="true" role="dialog">
+      <div class="modal-dialog modal-dialog-scrollable" role="document" id="teamTournamentsModal">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
       </div>
     </div>
     <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
