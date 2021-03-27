@@ -24,7 +24,6 @@ async function getMenRankings() {
             let lowerFlag = team.flag.toLowerCase()
             let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
             let row = document.createElement('tr')
-
             row.className = `table-danger`
             row.id = teamNo
             row.innerHTML = `<tr > 
@@ -160,7 +159,8 @@ async function populateModal(tournamentList) {
   for (let i = 0; i < tournamentList.length; i++) {
     let rank = ''
     let event = tournamentList[i]
-    let date = parseInt(event.date.$date.$numberLong)
+    let dateIn = parseInt(event.date.$date.$numberLong)
+  
     let ranked = parseInt(event.rank.$numberInt)
 
     switch (ranked) {
@@ -200,28 +200,51 @@ async function populateModal(tournamentList) {
     }
 
 
-    const dateObject = new Date(date).toJSON().split("T")[0]
-    // var d = dateObject.getDate()
-    // var m = dateObject.getMonth()
-    // console.log(d)
-    // console.log(m)
+    
+    var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    var date = new Date(dateIn); 
+    let year = date.getFullYear(); 
+    let month = date.getMonth() + 1; 
+    month = months[date.getMonth()]
+    let day = date.getDate();
 
+    console.log(date, month, day, year)
+    let dateObject = month + ' ' + day + ' ' + year
     let tournament = document.createElement('li')
     tournament.innerHTML = `
     <div class="container">
   <div class="row">
-  <div class="col-8">
-     <strong>${event.tournament}</strong> ${event.type} - ${dateObject}
+  <div class="row">
+  <div class="col-1">
+     ${i +1} 
+    </div>
+    <div class="col-7">
+     <strong>${event.tournament}</strong>
     </div>
     <div class="col-2">
-      <strong>${rank} place</strong>
+      ${rank}
     </div>
     <div class="col-2">
-    ${event.points.$numberInt} Points
+    ${event.points.$numberInt}
     </div>
-    
+    </div>
+    <div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-11">
+    ${event.type} 
+    </div>
+    </div> 
+    <div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-11">
+    ${dateObject}
+    </div>
+    </div> 
   </div>
 </div>
+<hr/>
     `
     document.getElementById('tournamentList').append(tournament)
   }
@@ -232,36 +255,40 @@ function openModal(tournamentList) {
   document.getElementById("tournamentsModal").style.display = "block"
   document.getElementById("tournamentsModal").className += "show"
   modal.innerHTML = `
+  <div class="modal-dialog" role="document">
   <div class="modal-content modal-lg">
+ 
           <div class="modal-header">
-            <h5 class="modal-title" id="tournamentsModalLabel">${tournamentList[0].name}</h5>
-             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+            <h5 class="modal-title" id="tournamentsModalLabel" style="margin-left:auto; margin-right:auto">${tournamentList[0].name}</h5>
+            
           </div>
           <div class="modal-body">
           <ul id="tournamentList" style="list-style-type:none;" >
           <li>
           <div class="container">
           <div class="row">
-  
-          <div class="col-8">
+          <div class="col-1">
+          
+          </div>
+          <div class="col-7">
           <h5>Event</h5>
           </div>
           <div class="col-2">
-          <h5>Place</h5>
+          <h5 style="margin-left:-1rem">Place</h5>
           </div>
           <div class="col-2" >
-          <h5>Points</h5>
+          <h5 style="margin-left:-1.25rem">Points</h5>
           </div>
           </div>
   </div></li>
           </ul>
           </div>
-         <div class="modal-footer">
-        <button type="button" class="btn btn-secondary close" data-dismiss="modal">Close</button>
+   
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
       </div>
-        </div>
+      </div>
+</div>
   `
   // document.getElementById('teamTournamentsModal').append(modal)
   populateModal(tournamentList)
@@ -284,7 +311,7 @@ window.onclick = function (event) {
 
 
 async function displayResults(res) {
-  let tournamentList = res.data 
+  let tournamentList = res.data
   openModal(tournamentList)
 }
 

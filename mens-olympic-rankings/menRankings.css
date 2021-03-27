@@ -6,3 +6,7 @@
  .modalHeadings {
    margin-left: 20px
  }
+
+ .modal {
+   overflow-y: auto;
+ }

@@ -11,10 +11,8 @@
     content="Olympic qualification rankings for men's beach volleyball, including color codes and points needed to replace 12th result.">
   <title>Men's Beach Volleyball Olympic Rankings</title>
   <style>
-    ul.no-bullets {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
+    .modal {
+      overflow-y: auto;
     }
   </style>
 </head>
@@ -103,7 +101,7 @@
           data-bs-parent="#accordionExample">
           <div class="accordion-body">
             <strong>Rank</strong> - Current place in Olympic Rankings.<br />
-            <strong>WC</strong> - World Champioins earn automatic qualification for Olympics.<br />
+            <strong>WC</strong> - World Champions earn automatic qualification for Olympics.<br />
             <strong>OQT</strong> - The two winners of the Olympic Qualification Tournament qualified for Tokyo.<br />
             <strong>CQ</strong> - This team is outside of it's countries top 2. It doesn't meet the country quota
             requirement.<br />
@@ -136,10 +134,10 @@
         </table>
 
     </container-fluid>
-    <div class="modal fade" id="tournamentsModal" tabindex="-1" aria-labelledby="tournamentsModalLabel"
-      aria-modal="true" role="dialog">
-      <div class="modal-dialog modal-dialog-scrollable" role="document" id="teamTournamentsModal">
-        
+    <div class="modal fade" id="tournamentsModal" tabindex="-1" role="dialog" aria-labelledby="tournamentsModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document" id="teamTournamentsModal">
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
