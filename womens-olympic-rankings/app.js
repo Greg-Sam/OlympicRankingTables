@@ -6,8 +6,8 @@ async function getWomenRankings() {
       let i = 1
       let score = 0
       let countries = {}
+      let numTied = 0
       womenRanks.map(team => {
-        console.log(team)
         let teamNo = team.teamNo.$numberDouble
 
         // check if in top two countries
@@ -39,11 +39,11 @@ async function getWomenRankings() {
           }
           else {
             if (score === team.olympicPoints.$numberInt) {
-
+              numTied++
+              i = i - numTied
               // tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
-                i = i - 1
                 let lowerFlag = team.flag.toLowerCase()
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
@@ -62,8 +62,7 @@ async function getWomenRankings() {
                 score = team.olympicPoints.$numberInt
               }
               else {
-               // tied team outside of top 15
-                i = i - 1
+                // tied team outside of top 15
                 let lowerFlag = team.flag.toLowerCase()
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
@@ -100,6 +99,7 @@ async function getWomenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
+                numTied = 0
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -120,6 +120,7 @@ async function getWomenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
+                numTied = 0
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -142,9 +143,8 @@ async function getWomenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
-
           document.getElementById('teamRow').append(row)
-          score = team.olympicPoints.$numberInt
+          
         }
 
       })

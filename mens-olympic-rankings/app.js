@@ -6,6 +6,7 @@ async function getMenRankings() {
       let i = 1
       let score = 0
       let countries = {}
+      let numTied = 0
       menRanks.map(team => {
         let teamNo = team.teamNo.$numberDouble
 
@@ -38,11 +39,11 @@ async function getMenRankings() {
           }
           else {
             if (score === team.olympicPoints.$numberInt) {
-
+              numTied++
+              i = i - numTied
               // tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
-                i = i - 1
                 let lowerFlag = team.flag.toLowerCase()
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
@@ -62,7 +63,6 @@ async function getMenRankings() {
               }
               else {
                 // tied team outside of top 15
-                i = i - 1
                 let lowerFlag = team.flag.toLowerCase()
                 let flag = `https://flagcdn.com/w40/${lowerFlag}.png`
                 let row = document.createElement('tr')
@@ -99,6 +99,7 @@ async function getMenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
+                numTied = 0
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -119,6 +120,7 @@ async function getMenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
+                numTied = 0
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -141,9 +143,8 @@ async function getMenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
-
           document.getElementById('teamRow').append(row)
-          score = team.olympicPoints.$numberInt
+          
         }
 
       })
