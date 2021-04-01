@@ -144,7 +144,7 @@ async function getWomenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
           document.getElementById('teamRow').append(row)
-          
+
         }
 
       })
@@ -206,9 +206,8 @@ async function populateModal(tournamentList) {
     let year = date.getFullYear();
     let month = date.getMonth() + 1;
     month = months[date.getMonth()]
-    let day = date.getDate();
+    let day = date.getDate()
 
-    console.log(date, month, day, year)
     let dateObject = month + ' ' + day + ' ' + year
     let tournament = document.createElement('li')
     tournament.innerHTML = `
@@ -260,7 +259,7 @@ function openModal(tournamentList) {
  
           <div class="modal-header">
             <h5 class="modal-title" id="tournamentsModalLabel" style="margin-left:auto; margin-right:auto">${tournamentList[0].name}</h5>
-            
+             <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
           </div>
           <div class="modal-body">
           <ul id="tournamentList" style="list-style-type:none;" >
@@ -284,9 +283,7 @@ function openModal(tournamentList) {
           </ul>
           </div>
    
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-      </div>
+          
       </div>
 </div>
   `

@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+  <link rel="canonical" href="https://beachvolleyblog.net/olympic-rankings/mens-olympic-rankings/" />
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +20,18 @@
 </head>
 
 <body>
+
+  <div class="modal fade" id="tournamentsModal" tabindex="-1" role="dialog" aria-labelledby="tournamentsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document" id="teamTournamentsModal">
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+  </div>
   <nav class="navbar navbar-expand-lg navbar-light bg-light" class="collapse navbar-collapse" id="navbarNavDropdown">
     <div class="container-fluid">
       <a class="navbar-brand" href="http://beachvolleyblog.net/">
@@ -134,29 +148,19 @@
         </table>
 
     </container-fluid>
-    <div class="modal fade" id="tournamentsModal" tabindex="-1" role="dialog" aria-labelledby="tournamentsModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document" id="teamTournamentsModal">
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-      </div>
-    </div>
-    <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
-  </div>
 
 
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
-    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-  <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+      crossorigin="anonymous"></script>
+
+    <script src="app.js"></script>
 
 
-  </script>
+    </script>
 </body>
 
 </html>

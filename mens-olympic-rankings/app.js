@@ -144,7 +144,7 @@ async function getMenRankings() {
         <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
           document.getElementById('teamRow').append(row)
-          
+
         }
 
       })
@@ -161,7 +161,7 @@ async function populateModal(tournamentList) {
     let rank = ''
     let event = tournamentList[i]
     let dateIn = parseInt(event.date.$date.$numberLong)
-  
+
     let ranked = parseInt(event.rank.$numberInt)
 
     switch (ranked) {
@@ -201,15 +201,14 @@ async function populateModal(tournamentList) {
     }
 
 
-    
+
     var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    var date = new Date(dateIn); 
-    let year = date.getFullYear(); 
-    let month = date.getMonth() + 1; 
+    var date = new Date(dateIn);
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
     month = months[date.getMonth()]
     let day = date.getDate();
 
-    console.log(date, month, day, year)
     let dateObject = month + ' ' + day + ' ' + year
     let tournament = document.createElement('li')
     tournament.innerHTML = `
@@ -217,7 +216,7 @@ async function populateModal(tournamentList) {
   <div class="row">
   <div class="row">
   <div class="col-1">
-     ${i +1} 
+     ${i + 1} 
     </div>
     <div class="col-7">
      <strong>${event.tournament}</strong>
@@ -261,7 +260,9 @@ function openModal(tournamentList) {
  
           <div class="modal-header">
             <h5 class="modal-title" id="tournamentsModalLabel" style="margin-left:auto; margin-right:auto">${tournamentList[0].name}</h5>
-            
+                
+      <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+ 
           </div>
           <div class="modal-body">
           <ul id="tournamentList" style="list-style-type:none;" >
@@ -285,9 +286,7 @@ function openModal(tournamentList) {
           </ul>
           </div>
    
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
-      </div>
+          
       </div>
 </div>
   `
