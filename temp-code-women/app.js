@@ -1,6 +1,6 @@
 async function getWomenRankings() {
 
-  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/womenolympicrankingsapi/incoming_webhook/apiwomenranking?secret=sEcrEt')
+  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympic_women2-dmser/service/api/incoming_webhook/webhook0')
     .then(async (res) => {
       let womenRanks = res.data
       let i = 1
@@ -8,7 +8,7 @@ async function getWomenRankings() {
       let countries = {}
       let numTied = 0
       womenRanks.map(team => {
-        let teamNo = team.teamNo.$numberDouble
+        let teamNo = team.teamNo.$numberInt
 
         // check if in top two countries
         let country = team.country
@@ -308,7 +308,7 @@ async function displayResults(res) {
 
 
 async function getTournaments(teamNo) {
-  await axios.get(`https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/team_results/incoming_webhook/team_results?teamNo=${teamNo}`)
+  await axios.get(`https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympic_women2-dmser/service/team_results/incoming_webhook/webhook0?teamNo=${teamNo}`)
     .then(async (res) => {
       displayResults(res)
     }
