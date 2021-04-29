@@ -1,6 +1,6 @@
 async function getWomenRankings() {
 
-  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/womenolympicrankingsapi/incoming_webhook/apiwomenranking?secret=sEcrEt')
+  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/womenolympicrankingsapi/incoming_webhook/apiwomenranking')
     .then(async (res) => {
       let womenRanks = res.data
       let i = 1
@@ -8,8 +8,9 @@ async function getWomenRankings() {
       let countries = {}
       let numTied = 0
       womenRanks.map(team => {
-        let teamNo = team.teamNo.$numberDouble
-
+      
+        let teamNo = team.teamNo.$numberInt
+        
         // check if in top two countries
         let country = team.country
         if ((`${country}` in countries)) {
@@ -18,7 +19,7 @@ async function getWomenRankings() {
           countries[`${country}`] = 1
         }
 
-        if (team.special === undefined) {
+        if (team.special === '') {
           // Teams not qualified through WC or OQT
           if (countries[`${country}`] > 2) {
             // teams outside of country's top 2 
