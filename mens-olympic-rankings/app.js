@@ -1,14 +1,15 @@
 async function getMenRankings() {
 
-  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/menolympicrankingsapi/incoming_webhook/api?secret=sEcrEt')
+  await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/menolympicrankingsapi/incoming_webhook/api')
     .then(async (res) => {
       let menRanks = res.data
+      console.log(menRanks)
       let i = 1
       let score = 0
       let countries = {}
       let numTied = 0
       menRanks.map(team => {
-        let teamNo = team.teamNo.$numberDouble
+        let teamNo = team.teamNo.$numberInt
 
         // check if in top two countries
         let country = team.country
@@ -18,7 +19,7 @@ async function getMenRankings() {
           countries[`${country}`] = 1
         }
 
-        if (team.special === undefined) {
+        if (team.special === "") {
           // Teams not qualified through WC or OQT
           if (countries[`${country}`] > 2) {
             // teams outside of country's top 2 
@@ -33,7 +34,7 @@ async function getMenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
             document.getElementById('teamRow').append(row)
           }
@@ -56,6 +57,7 @@ async function getMenRankings() {
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
         <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -74,7 +76,7 @@ async function getMenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -96,7 +98,7 @@ async function getMenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
                 numTied = 0
@@ -117,7 +119,7 @@ async function getMenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
                 numTied = 0
@@ -141,7 +143,7 @@ async function getMenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
           document.getElementById('teamRow').append(row)
 
