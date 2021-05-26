@@ -19,7 +19,7 @@ async function getWomenRankings() {
           countries[`${country}`] = 1
         }
 
-        if (team.special === undefined) {
+        if (team.special === "") {
           // Teams not qualified through WC or OQT
           if (countries[`${country}`] > 2) {
             // teams outside of country's top 2 
@@ -34,6 +34,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
             document.getElementById('teamRow').append(row)
           }
@@ -55,6 +56,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -73,6 +75,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -94,6 +97,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
                 numTied = 0
@@ -114,6 +118,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
                 i++
                 numTied = 0
@@ -137,6 +142,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
+        <td>${team.noOfTournaments.$numberInt}</td>
         </tr>`
           document.getElementById('teamRow').append(row)
 
@@ -309,7 +315,7 @@ async function displayResults(res) {
 
 
 async function getTournaments(teamNo) {
-  await axios.get(`https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankingswomen-amjnt/service/team_results/incoming_webhook/team_results?teamNo=${teamNo}`)
+  await axios.get(`https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympic_women2-dmser/service/team_results/incoming_webhook/webhook0?teamNo=${teamNo}`)
     .then(async (res) => {
       displayResults(res)
     }

@@ -48,16 +48,16 @@
     <script>
       async function getMenRankings() {
 
-          await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/menolympicrankingsapi/incoming_webhook/api?secret=sEcrEt')
+          await axios.get('https://us-west-2.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/olympicrankings-kinaz/service/menolympicrankingsapi/incoming_webhook/api')
             .then(async (res) => {
               let menRanks = res.data
+              console.log(menRanks)
               let i = 1
               let score = 0
               let countries = {}
               let numTied = 0
               menRanks.map(team => {
-                let teamNo = team.teamNo.$numberDouble
-
+                let teamNo = team.teamNo.$numberInt
                 // check if in top two countries
                 let country = team.country
                 if ((`${country}` in countries)) {
@@ -66,7 +66,7 @@
                   countries[`${country}`] = 1
                 }
 
-                if (team.special === undefined) {
+                if (team.special === '') {
                   // Teams not qualified through WC or OQT
                   if (countries[`${country}`] > 2) {
                     //     // teams outside of country's top 2 

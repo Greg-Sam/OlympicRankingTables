@@ -34,7 +34,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
             document.getElementById('teamRow').append(row)
           }
@@ -56,7 +56,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -75,7 +75,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
                 i = i + 2
                 document.getElementById('teamRow').append(row)
@@ -97,7 +97,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
                 i++
                 numTied = 0
@@ -118,7 +118,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
                 i++
                 numTied = 0
@@ -142,7 +142,7 @@ async function getWomenRankings() {
         <td>${team.name}</td>
         <td>${team.olympicPoints.$numberInt}</td>
         <td>${team.lowestCounted.$numberInt}</td>
-        <td>${team.noOfTournaments.$numberInt}</td>
+       
         </tr>`
           document.getElementById('teamRow').append(row)
 
