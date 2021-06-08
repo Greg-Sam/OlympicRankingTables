@@ -8,9 +8,9 @@ async function getWomenRankings() {
       let countries = {}
       let numTied = 0
       womenRanks.map(team => {
-      
+
         let teamNo = team.teamNo.$numberInt
-        
+
         // check if in top two countries
         let country = team.country
         if ((`${country}` in countries)) {
@@ -41,7 +41,7 @@ async function getWomenRankings() {
           else {
             if (score === team.olympicPoints.$numberInt) {
               numTied++
-              i = i - numTied
+              // i = i - numTied
               // tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
@@ -58,7 +58,8 @@ async function getWomenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
        
         </tr>`
-                i = i + 2
+                i++
+                // i = i + 2
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -77,7 +78,8 @@ async function getWomenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
        
         </tr>`
-                i = i + 2
+                i++
+                // i = i + 2
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }

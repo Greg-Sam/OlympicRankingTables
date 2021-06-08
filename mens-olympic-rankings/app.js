@@ -39,9 +39,10 @@ async function getMenRankings() {
             document.getElementById('teamRow').append(row)
           }
           else {
+            
             if (score === team.olympicPoints.$numberInt) {
               numTied++
-              i = i - numTied
+              
               // tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
@@ -59,7 +60,8 @@ async function getMenRankings() {
     
        
         </tr>`
-                i = i + 2
+                // i = i + 2
+                i++
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
@@ -78,11 +80,13 @@ async function getMenRankings() {
         <td>${team.lowestCounted.$numberInt}</td>
     
         </tr>`
-                i = i + 2
+        i++ 
+                // i = i + 2
                 document.getElementById('teamRow').append(row)
                 score = team.olympicPoints.$numberInt
               }
-            } else {
+            } 
+            else {
               // not tied team in country's top 2 
               if (i <= 15) {
                 // teams in top 15
