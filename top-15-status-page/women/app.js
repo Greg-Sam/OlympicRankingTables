@@ -10,7 +10,7 @@ async function getWomenRankings() {
       womenRanks.map(team => {
         let teamNo = team.teamNo.$numberDouble
 
-        // check if in top two countries
+        // check if in top two countries 
         let country = team.country
         if ((`${country}` in countries)) {
           countries[`${country}`]++
