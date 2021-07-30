@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-H5XWZ2DC8H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-H5XWZ2DC8H');
+  </script>
+
+  <link rel="canonical" href="https://beachvolleyblog.net/olympics/mens-standings/" />
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <meta name="description" content="Olympic standings for beach volleyball pools.">
+  <title>Men's Olympic Beach Volleyball Pools</title>
+  <style>
+    .modal {
+      overflow-y: auto;
+    }
+  </style>
+  <script data-ad-client="ca-pub-6099233190432179" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+</head>
+
+<body>
+
+  <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="resultsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document" id="teamResultsModal">
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+  <div class="modal-backdrop fade show" id="backdrop" style="display: none;"></div>
+  </div>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light" class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://beachvolleyblog.net/">
+        <img src="./images/ogSW49E6_400x400.jpg" alt="Beach Volley Blog Logo" width="60" height="60"
+          class="d-inline-block align-top">
+        The Beach Volley Blog
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://beachvolleyblog.net/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://beachvolleyblog.net/about/">About</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Olympic Brackets and Pool Standings
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="https://beachvolleyblog.net/olympics/pools/"> Olympic Pools
+                Standings</a></li>
+            <li><a class="dropdown-item" href="https://beachvolleyblog.net/olympics/brackets/">Olympic Tournament
+                Brackets</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div class="container-sm">
+    <h1 class="text-center" id="title">Olympic Beach Volleyball Pools</h1>
+
+
+    <!-- start two column layout for rss display -->
+    <div class="row">
+      <div class="col-lg-9">
+        <button type="button" class="btn btn-outline-dark" id="btn-M">Men's Pools</button>
+        <button type="button" class="btn btn-outline-dark" id="btn-w-M">Women's Pools</button>
+
+        <container-fluid>
+          <h5 id="poolLabel"></h5>
+          <div class="table-responsive">
+            <table class="table table-dark table-hover">
+              <thead class="header">
+                <tr>
+                  <th scope="col">Team</th>
+                  <th scope="col"></th>
+                  <th scope="col">Matches</th>
+                  <th scope="col">Sets</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody id="teamRow">
+              </tbody>
+            </table>
+          </div>
+        </container-fluid>
+      </div>
+
+      <div class="col-lg-3">
+        <!-- start feedwind code -->
+        <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" preloader-text="Loading"
+          data-fw-param="144838/"></script> <!-- end feedwind code -->
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+      <script src="app.js"></script>
+
+
+      </script>
+</body>
+
+</html>
