@@ -20,10 +20,15 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
   <meta name="description" content="Olympic standings for beach volleyball pools.">
-  <title>Men's Olympic Beach Volleyball Pools</title>
+  <title>Olympic Beach Volleyball Standings</title>
   <style>
     .modal {
       overflow-y: auto;
+    }
+
+    .header-button {
+      width: 150px;
+      padding: 5px;
     }
   </style>
   <script data-ad-client="ca-pub-6099233190432179" async
@@ -80,9 +85,36 @@
     <!-- start two column layout for rss display -->
     <div class="row">
       <div class="col-lg-9">
-        <button type="button" class="btn btn-outline-dark" id="btn-M">Men's Pools</button>
-        <button type="button" class="btn btn-outline-dark" id="btn-w-M">Women's Pools</button>
+        <div class="row">
 
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="Men group">
+              <a href="#" role="button" class="btn btn-secondary header-button disabled" aria-disabled="true">Men's
+                Pools</a>
+              <button type="button" class="btn btn-secondary" id='mA'>A</button>
+              <button type="button" class="btn btn-secondary" id='mB'>B</button>
+              <button type="button" class="btn btn-secondary" id='mC'>C</button>
+              <button type="button" class="btn btn-secondary" id='mD'>D</button>
+              <button type="button" class="btn btn-secondary" id='mE'>E</button>
+              <button type="button" class="btn btn-secondary" id='mF'>F</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group mr-2" role="group" aria-label="women group">
+              <a href="#" role="button" class="btn btn-secondary header-button disabled" aria-disabled="true">Women's
+                Pools</a>
+              <button type="button" class="btn btn-secondary" id='wA'>A</button>
+              <button type="button" class="btn btn-secondary" id='wB'>B</button>
+              <button type="button" class="btn btn-secondary" id='wC'>C</button>
+              <button type="button" class="btn btn-secondary" id='wD'>D</button>
+              <button type="button" class="btn btn-secondary" id='wE'>E</button>
+              <button type="button" class="btn btn-secondary" id='wF'>F</button>
+            </div>
+          </div>
+        </div>
         <container-fluid>
           <h5 id="poolLabel"></h5>
           <div class="table-responsive">
